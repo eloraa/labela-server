@@ -2,8 +2,8 @@
   "name": "express-webpack-boilerplate",
   "version": "1.0.0",
   "scripts": {
-    "start": "node ./express",
-    "dev": "nodemon ./express"
+    "start": "node ./",
+    "dev": "nodemon ./"
   },
   "author": "Neon",
   "license": "ISC",
