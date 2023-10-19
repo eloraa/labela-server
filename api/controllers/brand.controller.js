@@ -109,7 +109,7 @@ exports.get = async (req, res, next) => {
                         {
                             image: "/01.jpg",
                             theme: "#ffc17e",
-                            heading: ["Levi&apos;s: Forever", "Original"],
+                            heading: ["Levi's: Forever", "Original"],
                         },
                         {
                             image: "/02.jpg",
