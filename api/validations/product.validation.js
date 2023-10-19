@@ -9,7 +9,7 @@ module.exports = {
             brandName: Joi.string().valid(...brands).required(),
             type: Joi.string().max(20).required(),
             price: Joi.number().max(99999999999999).required(),
-            description: Joi.string().max(350).min(3).required(),
+            description: Joi.string().max(1200).min(3).required(),
             rating: Joi.number().max(5).required()
         },
     },
