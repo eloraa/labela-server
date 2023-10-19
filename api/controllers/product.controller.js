@@ -2,6 +2,7 @@ const { pick } = require("lodash");
 const { productCollection } = require("../../config/mongodb");
 const httpStatus = require("http-status");
 const { ObjectId } = require("mongodb");
+const APIError = require("../errors/api-error");
 
 exports.get = async (req, res, next) => {
     try {
@@ -25,6 +26,32 @@ exports.add = async (req, res, next) => {
           return res.json({
             success: true
           });
+        }
+      } catch (error) {
+        return next(error);
+      }
+};
+exports.update = async (req, res, next) => {
+    try {
+        const query = {
+            _id: new ObjectId(req.params.id)
+        }
+        const productData = pick(req.body, 'name', 'brandName', 'image', 'price', 'type', 'rating', 'description');
+        const result = await productCollection.updateOne(query, { $set: productData });
+        console.log(result);
+        if (result.modifiedCount) {
+          return res.json({
+            success: true
+          });
+        }
+        else {
+
+            const error = new APIError({
+                message: "Nothing to update",
+                status: httpStatus.BAD_REQUEST,
+                isPublic: true,
+            });
+            return next(error)
         }
       } catch (error) {
         return next(error);

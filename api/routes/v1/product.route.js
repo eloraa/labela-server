@@ -14,6 +14,11 @@ router
 router
     .route("/add")
 
-    .post(validate(product), controller.add);
+    .post(validate(pick(product, 'body')), controller.add);
+
+router
+    .route("/:id")
+
+    .patch(validate(product), controller.update);
 
 module.exports = router;

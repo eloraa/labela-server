@@ -27,7 +27,6 @@ exports.connect = () => {
 /**
 * returns client
 */
-console.log(dbname);
 exports.client =  client;
 exports.db =  client.db(dbname);
 exports.brandCollection =  this.db.collection('brands');
