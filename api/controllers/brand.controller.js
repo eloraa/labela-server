@@ -147,11 +147,11 @@ exports.get = async (req, res, next) => {
 
 exports.list = async (req, res, next) => {
     try {
-        const brand = pick(req.params, "brand");
+        const brand = pick(req.params, "brandName");
+        const pattern = new RegExp('^' + brand.brandName + '$', 'i');
+        brand.brandName = pattern
         const products = await productCollection.find(brand).toArray();
-
-        console.log(products);
-        res.json(products);
+        res.json(omit(products, '_id'));
     } catch (error) {
         next(error);
     }

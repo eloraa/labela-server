@@ -11,7 +11,7 @@ router
     .get(controller.get)
 
 router
-    .route("/:brand")
+    .route("/:brandName")
 
     .get(validate(brand), controller.list);
 

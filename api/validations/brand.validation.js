@@ -4,7 +4,7 @@ const { brands } = require("../../config/vars");
 module.exports = {
     brand: {
         params: {
-            brand: Joi.string().valid(...brands).insensitive().required()
+            brandName: Joi.string().valid(...brands).insensitive().required()
         }
     },
 };
