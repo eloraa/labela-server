@@ -9,7 +9,7 @@ exports.get = async (req, res, next) => {
         each(brands, (brand) => {
             switch (brand) {
                 case "Nike":
-                    scheme[brand] = [
+                    scheme[brand.toLowerCase()] = [
                         {
                             image: "/01.jpg",
                             theme: "#ffc17e",
@@ -29,97 +29,97 @@ exports.get = async (req, res, next) => {
                     break;
 
                 case "Adidas":
-                    scheme[brand] = [
+                    scheme[brand.toLowerCase()] = [
                         {
                             image: "/01.jpg",
-                            theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            theme: "#fff",
+                            heading: ["Impossible Is", "Nothing"],
                         },
                         {
                             image: "/02.jpg",
-                            theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            theme: "#cae7be",
+                            heading: ["Live", "Forever"],
                         },
                         {
                             image: "/03.jpg",
-                            theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            theme: "#ffcb99",
+                            heading: ["All things", "nice"],
                         },
                     ];
                     break;
                 case "Gucci":
-                    scheme[brand] = [
+                    scheme[brand.toLowerCase()] = [
                         {
                             image: "/01.jpg",
-                            theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            theme: "#f4c6c6",
+                            heading: ["House of", "Gucci"],
                         },
                         {
                             image: "/02.jpg",
                             theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            heading: ["Hot summer", "deal"],
                         },
                         {
                             image: "/03.jpg",
-                            theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            theme: "#e8f6a7",
+                            heading: ["Luxury is", "a choice"],
                         },
                     ];
                     break;
                 case "Zara":
-                    scheme[brand] = [
+                    scheme[brand.toLowerCase()] = [
                         {
                             image: "/01.jpg",
-                            theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            theme: "#eeeeee",
+                            heading: ["Love Your", "Curves"],
                         },
                         {
                             image: "/02.jpg",
-                            theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            theme: "#b5b8c4",
+                            heading: ["Sweet as", "Spring"],
                         },
                         {
                             image: "/03.jpg",
-                            theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            theme: "#ffe6cc",
+                            heading: ["Eastern Elegance", "Unveiled"],
                         },
                     ];
                     break;
                 case "H&M":
-                    scheme[brand] = [
+                    scheme[brand.toLowerCase()] = [
                         {
                             image: "/01.jpg",
-                            theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            theme: "#f8f9b6",
+                            heading: ["However you", "move"],
                         },
                         {
                             image: "/02.jpg",
                             theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            heading: ["Style Redefined", "Here"],
                         },
                         {
                             image: "/03.jpg",
-                            theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            theme: "#ebe0ff",
+                            heading: ["Blossom into", "Style"],
                         },
                     ];
                     break;
                 case "Levi's":
-                    scheme[brand] = [
+                    scheme[brand.toLowerCase()] = [
                         {
                             image: "/01.jpg",
                             theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            heading: ["Levi&apos;s: Forever", "Original"],
                         },
                         {
                             image: "/02.jpg",
-                            theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            theme: "#a6a299",
+                            heading: ["Classic Comfort", "Unleashed"],
                         },
                         {
                             image: "/03.jpg",
-                            theme: "#ffc17e",
-                            heading: ["Just do", "it"],
+                            theme: "#ddd8f6",
+                            heading: ["Denim Legacy", "Lives"],
                         },
                     ];
                     break;
