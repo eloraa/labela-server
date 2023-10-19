@@ -12,5 +12,8 @@ module.exports = {
             description: Joi.string().max(1200).min(3).required(),
             rating: Joi.number().max(5).required()
         },
+        params: {
+          id: Joi.string().regex(/^[a-fA-F0-9]{24}$/).required(),
+        }
     },
 };
