@@ -28,6 +28,6 @@ exports.connect = () => {
 * returns client
 */
 exports.client =  client;
-exports.db =  client.db('labela');
+exports.db =  client.db(process.env.DB_NAME || 'mydb');
 exports.brandCollection =  this.db.collection('brands');
 exports.productCollection =  this.db.collection('products');
