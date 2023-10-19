@@ -151,7 +151,7 @@ exports.list = async (req, res, next) => {
         const pattern = new RegExp('^' + brand.brandName + '$', 'i');
         brand.brandName = pattern
         const products = await productCollection.find(brand).toArray();
-        res.json(omit(products, '_id'));
+        res.json(products);
     } catch (error) {
         next(error);
     }
