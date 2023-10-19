@@ -1,4 +1,4 @@
-const { omit, pick } = require("lodash");
+const { pick } = require("lodash");
 const { db } = require("../../config/mongodb");
 const httpStatus = require("http-status");
 const APIError = require("../errors/api-error");
