@@ -29,3 +29,5 @@ exports.connect = () => {
 */
 exports.client =  client;
 exports.db =  client.db('labela');
+exports.brandCollection =  this.db.collection('brands');
+exports.productCollection =  this.db.collection('products');

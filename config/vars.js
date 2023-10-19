@@ -12,5 +12,7 @@ module.exports = {
   mongo: {
     uri: process.env.NODE_ENV === 'test' ? process.env.MONGO_URI_TESTS : process.env.MONGO_URI,
   },
-  logs: process.env.NODE_ENV === 'production' ? 'combined' : 'dev'
+  logs: process.env.NODE_ENV === 'production' ? 'combined' : 'dev',
+  brands: ["Nike", "Adidas", "Gucci", "Zara", "H&M", "Levi's"],
+  types: ['Clothes', 'Accessories', 'Footwears']
 };
