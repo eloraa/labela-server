@@ -14,4 +14,5 @@ module.exports = {
   },
   logs: process.env.NODE_ENV === 'production' ? 'combined' : 'dev',
   brands: ["Nike", "Adidas", "Gucci", "Zara", "H&M", "Levi's"],
+  dbname: process.env.DB_NAME
 };

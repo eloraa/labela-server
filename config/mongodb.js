@@ -1,5 +1,5 @@
 const logger = require("./logger");
-const { mongo } = require("./vars");
+const { mongo, dbname } = require("./vars");
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const client = new MongoClient(mongo.uri, {
@@ -28,6 +28,6 @@ exports.connect = () => {
 * returns client
 */
 exports.client =  client;
-exports.db =  client.db(process.env.DB_NAME || 'mydb');
+exports.db =  client.db(dbname);
 exports.brandCollection =  this.db.collection('brands');
 exports.productCollection =  this.db.collection('products');
