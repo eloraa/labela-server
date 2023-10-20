@@ -5,6 +5,13 @@ const { product } = require("../../validations/product.validation");
 const { pick } = require("lodash");
 
 const router = express.Router();
+
+router
+    .route("/")
+
+    .get(controller.list);
+
+
 router
     .route("/latest")
 

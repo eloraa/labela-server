@@ -4,6 +4,21 @@ const httpStatus = require("http-status");
 const { ObjectId } = require("mongodb");
 const APIError = require("../errors/api-error");
 
+exports.list = async (req, res, next) => {
+    try {
+        const page = parseInt(req.query.page) || 1;
+        const producsPerPage = 10;
+
+        const total = await productCollection.countDocuments();
+        const totalPages = Math.ceil(total / producsPerPage);
+
+        const products = await productCollection.find().skip((page - 1) * producsPerPage).limit(producsPerPage).toArray();
+        res.json({ products, totalPages, currentPage: page });
+    } catch (error) {
+        next(error);
+    }
+};
+
 exports.get = async (req, res, next) => {
     try {
         const query = {
