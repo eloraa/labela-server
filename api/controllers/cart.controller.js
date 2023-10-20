@@ -1,6 +1,6 @@
 const { productCollection, cartCollection } = require("../../config/mongodb");
 const httpStatus = require("http-status");
-const { map, zip, merge } = require("lodash");
+const { map, find, merge } = require("lodash");
 const { ObjectId } = require("mongodb");
 
 
@@ -11,7 +11,14 @@ exports.list = async (req, res, next) => {
         const query = { _id: { $in: filter } };
         const products = await productCollection.find(query).toArray()
 
-        const carts = zip(cartsData, products).map((pair) => merge({}, ...pair))
+        const carts = map(cartsData, (cartItem) => {
+            const matchingProduct = find(products, { '_id': cartItem.productId });
+            if (matchingProduct) {
+              return merge({}, cartItem, matchingProduct);
+            } else {
+              return cartItem;
+            }
+        });
         return res.json(carts);
       } catch (error) {
         return next(error);
