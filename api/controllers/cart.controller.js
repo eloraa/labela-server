@@ -15,7 +15,8 @@ exports.list = async (req, res, next) => {
 exports.add = async (req, res, next) => {
     try {
         const query = {
-            productId: new ObjectId(req.body.productId)
+            productId: new ObjectId(req.body.productId),
+            uid: req.params.uid
         }
         const result = await cartCollection.updateOne(query, { $set: { quantity: parseInt(req.body.quantity) } })
 
