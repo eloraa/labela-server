@@ -57,3 +57,12 @@ exports.update = async (req, res, next) => {
         return next(error);
       }
 };
+
+exports.latest = async (req, res, next) => {
+    try {
+        const products = await productCollection.find().sort({ _id: -1 }).limit(8).toArray();
+        res.json(products);
+    } catch (error) {
+        next(error);
+    }
+};

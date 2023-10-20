@@ -5,20 +5,25 @@ const { product } = require("../../validations/product.validation");
 const { pick } = require("lodash");
 
 const router = express.Router();
+router
+    .route("/latest")
+
+    .get(controller.latest);
 
 router
     .route("/:id")
 
-    .get(validate(pick(product, 'params')), controller.get);
+    .get(validate(pick(product, "params")), controller.get);
 
 router
     .route("/add")
 
-    .post(validate(pick(product, 'body')), controller.add);
+    .post(validate(pick(product, "body")), controller.add);
 
 router
     .route("/:id")
 
     .patch(validate(product), controller.update);
+
 
 module.exports = router;
