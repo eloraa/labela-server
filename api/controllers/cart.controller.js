@@ -18,7 +18,13 @@ exports.add = async (req, res, next) => {
             productId: new ObjectId(req.body.productId),
             uid: req.params.uid
         }
-        const result = await cartCollection.updateOne(query, { $inc: { quantity: parseInt(req.body.quantity) } })
+        let result;
+        if(req.body.method === 'inc') {
+            result = await cartCollection.updateOne(query, { $inc: { quantity: parseInt(req.body.quantity) } })
+        }
+        else {
+            result = await cartCollection.updateOne(query, { $set: { quantity: parseInt(req.body.quantity) } })
+        }
 
 
         if(result.matchedCount) {
