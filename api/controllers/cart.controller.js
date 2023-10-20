@@ -1,13 +1,16 @@
 const { productCollection, cartCollection } = require("../../config/mongodb");
 const httpStatus = require("http-status");
+const { map } = require("lodash");
 const { ObjectId } = require("mongodb");
 
 
 exports.list = async (req, res, next) => {
     try {
-        const query = { uid: req.params.uid }
-        const carts = await cartCollection.find(query).toArray();
-        return res.json(carts);
+        const carts = await cartCollection.find({ uid: req.params.uid }).toArray();
+        const filter = map(carts, 'productId')
+        const query = { _id: { $in: filter } };
+        const products = await productCollection.find(query).toArray()
+        return res.json(products);
       } catch (error) {
         return next(error);
       }
