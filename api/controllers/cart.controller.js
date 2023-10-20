@@ -25,10 +25,10 @@ exports.add = async (req, res, next) => {
         }
         let result;
         if(req.body.method === 'inc') {
-            result = await cartCollection.updateOne(query, { $inc: { quantity: parseInt(req.body.quantity) } })
+            result = await cartCollection.updateOne(query, { $inc: { quantity: parseInt(req.body.quantity || 1) } })
         }
         else {
-            result = await cartCollection.updateOne(query, { $set: { quantity: parseInt(req.body.quantity) } })
+            result = await cartCollection.updateOne(query, { $set: { quantity: parseInt(req.body.quantity || 1) } })
         }
 
 
@@ -45,7 +45,7 @@ exports.add = async (req, res, next) => {
                     productId: product._id,
                     name: product.name,
                     price: product.price,
-                    quantity: req.body.quantity
+                    quantity: req.body.quantity || 1
                 }
                 const result = await cartCollection.insertOne(cartData)
                 if (result.insertedId) {

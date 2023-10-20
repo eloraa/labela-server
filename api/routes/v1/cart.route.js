@@ -19,6 +19,6 @@ router
 router
     .route("/:uid")
 
-    .delete(validate(pick(carts, 'deleteProduct')), controller.delete);
+    .delete(validate(carts), controller.delete);
 
 module.exports = router;
