@@ -1,6 +1,6 @@
 const { productCollection, cartCollection } = require("../../config/mongodb");
 const httpStatus = require("http-status");
-const { map } = require("lodash");
+const { map, zip } = require("lodash");
 const { ObjectId } = require("mongodb");
 
 
@@ -10,7 +10,7 @@ exports.list = async (req, res, next) => {
         const filter = map(carts, 'productId')
         const query = { _id: { $in: filter } };
         const products = await productCollection.find(query).toArray()
-        return res.json(products);
+        return res.json(zip(products, carts));
       } catch (error) {
         return next(error);
       }
