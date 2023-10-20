@@ -18,7 +18,7 @@ const client = new MongoClient(mongo.uri, {
 exports.connect = () => {
     client
         .connect()
-        .then(() =>client.db("admin").command({ ping: 1 }))
+        .then(() =>client.db(dbname).command({ ping: 1 }))
         .then(() => console.log("mongoDB connected..."))
 
     return client;
