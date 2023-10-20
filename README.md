@@ -2,12 +2,7 @@
 https://labela-x.web.app/
 
 ## Getting Started
-To get you started you can simply clone the repository:
-
-```
-git clone ...
-```
-and install the dependencies
+To get you started you can simply clone the repository and install the dependencies
 ```
 yarn
 ```
