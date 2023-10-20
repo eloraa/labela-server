@@ -7,7 +7,7 @@ const APIError = require("../errors/api-error");
 exports.list = async (req, res, next) => {
     try {
         const page = parseInt(req.query.page) || 1;
-        const producsPerPage = 10;
+        const producsPerPage = 12;
 
         const total = await productCollection.countDocuments();
         const totalPages = Math.ceil(total / producsPerPage);
