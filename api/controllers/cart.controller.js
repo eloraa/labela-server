@@ -68,3 +68,20 @@ exports.add = async (req, res, next) => {
       }
 }
 
+exports.delete = async (req, res, next) => {
+    try {
+        const query = {
+            productId: new ObjectId(req.body.productId),
+            uid: req.params.uid
+        }
+        const result = await cartCollection.deleteOne(query)
+        if(result.deletedCount) {
+            return res.json({ success: true })
+        } else {
+            res.status(httpStatus.BAD_REQUEST)
+            return res.json({ success: false })
+        }
+      } catch (error) {
+        return next(error);
+      }
+};

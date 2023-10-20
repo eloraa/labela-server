@@ -3,6 +3,18 @@ const { brandCollection, productCollection } = require("../../config/mongodb");
 const httpStatus = require("http-status");
 const { brands } = require("../../config/vars");
 
+exports.list = async (req, res, next) => {
+    try {
+        const brand = pick(req.params, "brandName");
+        const pattern = new RegExp('^' + brand.brandName + '$', 'i');
+        brand.brandName = pattern
+        const products = await productCollection.find(brand).toArray();
+        res.json(products);
+    } catch (error) {
+        next(error);
+    }
+};
+
 exports.get = async (req, res, next) => {
     try {
         const scheme = {};
@@ -143,18 +155,6 @@ exports.get = async (req, res, next) => {
             res.status(httpStatus.BAD_REQUEST)
             return res.send([])
         }
-    } catch (error) {
-        next(error);
-    }
-};
-
-exports.list = async (req, res, next) => {
-    try {
-        const brand = pick(req.params, "brandName");
-        const pattern = new RegExp('^' + brand.brandName + '$', 'i');
-        brand.brandName = pattern
-        const products = await productCollection.find(brand).toArray();
-        res.json(products);
     } catch (error) {
         next(error);
     }

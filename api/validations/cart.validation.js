@@ -10,6 +10,9 @@ module.exports = {
         },
         params: {
           uid: Joi.required(),
+        },
+        deleteProduct: {
+            productId: Joi.string().regex(/^[a-fA-F0-9]{24}$/).required()
         }
     },
 };
