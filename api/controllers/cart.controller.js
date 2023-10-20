@@ -23,15 +23,20 @@ exports.add = async (req, res, next) => {
             productId: new ObjectId(req.body.productId),
             uid: req.params.uid
         }
+
         let result;
         if(req.body.method === 'inc') {
-            result = await cartCollection.updateOne(query, { $inc: { quantity: parseInt(req.body.quantity || 1) } })
+            result = await cartCollection.updateOne(query, { $inc: { quantity: parseInt(req.body.quantity) } })
         }
         else {
-            result = await cartCollection.updateOne(query, { $set: { quantity: parseInt(req.body.quantity || 1) } })
+            result = await cartCollection.updateOne(query, { $set: { quantity: parseInt(req.body.quantity) } })
         }
 
-
+        if(!result.modifiedCount && result.matchedCount) {
+            return res.json({
+                success: false
+            })
+        }
         if(result.matchedCount) {
             res.status(httpStatus.CREATED);
             return res.json({

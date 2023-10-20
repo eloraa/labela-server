@@ -1,7 +1,7 @@
 const express = require("express");
 const controller = require("../../controllers/cart.controller");
 const validate = require("express-validation");
-const { pick } = require("lodash");
+const { pick, omit } = require("lodash");
 const { carts } = require("../../validations/cart.validation");
 
 const router = express.Router();
@@ -19,6 +19,6 @@ router
 router
     .route("/:uid")
 
-    .delete(validate(carts), controller.delete);
+    .delete(validate(omit(carts, 'body.quantity')), controller.delete);
 
 module.exports = router;
