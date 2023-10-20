@@ -13,7 +13,7 @@ exports.list = async (req, res, next) => {
         const totalPages = Math.ceil(total / producsPerPage);
 
         const products = await productCollection.find().skip((page - 1) * producsPerPage).limit(producsPerPage).toArray();
-        res.json({ products, totalPages, currentPage: page });
+        res.json({ products, totalPages, currentPage: page, total });
     } catch (error) {
         next(error);
     }
