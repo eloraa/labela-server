@@ -15,6 +15,6 @@ router.get('/status', (req, res) => res.send('OK'));
 router.use('/newsletter', newletterroute)
 router.use('/brand', brandroute)
 router.use('/product', productroute)
-router.use('/carts', cartroute)
+router.use('/cart', cartroute)
 
 module.exports = router;

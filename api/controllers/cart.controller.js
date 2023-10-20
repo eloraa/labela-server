@@ -18,9 +18,8 @@ exports.add = async (req, res, next) => {
             productId: new ObjectId(req.body.productId),
             uid: req.params.uid
         }
-        const result = await cartCollection.updateOne(query, { $set: { quantity: parseInt(req.body.quantity) } })
+        const result = await cartCollection.updateOne(query, { $inc: { quantity: parseInt(req.body.quantity) } })
 
-        console.log(result,query);
 
         if(result.matchedCount) {
             res.status(httpStatus.CREATED);
