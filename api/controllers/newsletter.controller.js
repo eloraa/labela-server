@@ -31,6 +31,10 @@ exports.add = async (req, res, next) => {
             return res.json({
                 success: true,
             });
+        } else {
+            return res.json({
+                success: false,
+            });
         }
     } catch (error) {
         next(error);

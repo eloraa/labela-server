@@ -139,6 +139,9 @@ exports.get = async (req, res, next) => {
         if (result.insertedId) {
             res.status(httpStatus.CREATED);
             return res.json(brandData);
+        } else {
+            res.status(httpStatus.BAD_REQUEST)
+            return res.send([])
         }
     } catch (error) {
         next(error);

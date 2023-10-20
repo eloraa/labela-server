@@ -31,3 +31,4 @@ exports.client =  client;
 exports.db =  client.db(dbname);
 exports.brandCollection =  this.db.collection('brands');
 exports.productCollection =  this.db.collection('products');
+exports.cartCollection =  this.db.collection('carts');

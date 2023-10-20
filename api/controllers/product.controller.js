@@ -3,6 +3,7 @@ const { productCollection } = require("../../config/mongodb");
 const httpStatus = require("http-status");
 const { ObjectId } = require("mongodb");
 const APIError = require("../errors/api-error");
+const { json } = require("body-parser");
 
 exports.list = async (req, res, next) => {
     try {
@@ -27,6 +28,8 @@ exports.get = async (req, res, next) => {
         const product = await productCollection.findOne(query);
         if (product) {
           return res.json(product);
+        } else {
+            return res,json({})
         }
       } catch (error) {
         return next(error);
@@ -40,6 +43,10 @@ exports.add = async (req, res, next) => {
           res.status(httpStatus.CREATED);
           return res.json({
             success: true
+          });
+        } else {
+          return res.json({
+            success: false
           });
         }
       } catch (error) {
@@ -60,7 +67,6 @@ exports.update = async (req, res, next) => {
           });
         }
         else {
-
             const error = new APIError({
                 message: "Nothing to update",
                 status: httpStatus.BAD_REQUEST,
