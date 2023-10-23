@@ -60,7 +60,6 @@ exports.update = async (req, res, next) => {
         }
         const productData = pick(req.body, 'name', 'brandName', 'image', 'price', 'type', 'rating', 'description');
         const result = await productCollection.updateOne(query, { $set: productData });
-        console.log(result);
         if (result.modifiedCount) {
           return res.json({
             success: true

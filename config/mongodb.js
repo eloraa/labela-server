@@ -19,7 +19,7 @@ exports.connect = () => {
     client
         .connect()
         .then(() =>client.db(dbname).command({ ping: 1 }))
-        .then(() => console.log("mongoDB connected..."))
+        .then(() => logger.info("mongoDB connected..."))
 
     return client;
 };
